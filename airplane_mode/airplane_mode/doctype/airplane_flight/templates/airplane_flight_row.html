@@ -1,0 +1,10 @@
+<div style="border: 1px solid #ddd; border-radius: 6px; padding: 16px; margin-bottom: 16px;">
+    <strong>{{ doc.airline }}</strong>
+    <div>{{ doc.source_airport }} &rarr; {{ doc.destination_airport }}</div>
+    <div>
+        {{ frappe.utils.format_date(doc.date_of_departure) }} |
+        {{ doc.time_of_departure }} |
+        {{ frappe.utils.format_duration(doc.duration) }}
+    </div>
+    <a href="/{{ doc.route }}">View Flight</a>
+</div>
