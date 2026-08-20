@@ -1,18 +1,7 @@
 {% extends "templates/web.html" %}
 
 {% block page_content %}
-<h1>{{ name |e }}</h1>
+<h1>Flights</h1>
 
-<h3>Flight Details</h3>
-<ul>
-    <li>Airline: {{ airline |e }}</li>
-    <li>{{ source_airport |e }} &rarr; {{ destination_airport |e }}</li>
-    <li>
-        {{ frappe.utils.format_date(date_of_departure) }} |
-        {{ time_of_departure |e }}
-    </li>
-    <li>Duration: {{ frappe.utils.format_duration(duration) }}</li>
-</ul>
-
-<a href="#" class="btn btn-primary">Book Flight</a>
+{% include "templates/includes/list/list.html" %}
 {% endblock %}

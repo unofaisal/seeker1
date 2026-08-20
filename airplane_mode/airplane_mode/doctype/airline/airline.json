@@ -9,7 +9,8 @@
  "field_order": [
   "founding_year",
   "customer_care_number",
-  "headquarters"
+  "headquarters",
+  "website"
  ],
  "fields": [
   {
@@ -32,6 +33,12 @@
    "in_list_view": 1,
    "label": "Headquarters",
    "reqd": 1
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website",
+   "options": "URL"
   }
  ],
  "grid_page_length": 50,
@@ -40,12 +47,10 @@
   {
    "group": "Airplanes",
    "link_doctype": "Airplane",
-   "link_fieldname": "airline",
-   "parent_doctype": "Airline",
-   "table_fieldname": "airplanes"
+   "link_fieldname": "airline"
   }
  ],
- "modified": "2026-08-18 10:23:36.833586",
+ "modified": "2026-08-20 09:31:55.978434",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airline",

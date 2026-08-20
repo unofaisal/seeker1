@@ -14,6 +14,24 @@ frappe.ui.form.on('Airplane Ticket', {
     },
     refresh: function(frm) {
         calculate_total(frm);
+
+        if (!frm.is_new()) {
+            frm.add_custom_button(__('Set Seat'), function() {
+                frappe.prompt(
+                    {
+                        label: __('Seat Number'),
+                        fieldname: 'seat_number',
+                        fieldtype: 'Data',
+                        reqd: 1
+                    },
+                    function(values) {
+                        frm.set_value('seat', values.seat_number);
+                    },
+                    __('Set Seat'),
+                    __('Set')
+                );
+            }, __('Actions'));
+        }
     },
     flight_price: function(frm) {
         calculate_total(frm);
@@ -22,7 +40,7 @@ frappe.ui.form.on('Airplane Ticket', {
     if (frm.doc.flight_status !== "Boarded"){
       frappe.throw("Only Boarded ticket status are submitable")
     }
-  }
+  },
     'add_ons': function(frm) {
         calculate_total(frm);
     },

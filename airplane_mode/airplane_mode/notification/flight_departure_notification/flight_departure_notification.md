@@ -1,0 +1,1 @@
+Flight {{ doc.name }} departs in 24 hours! Route: {{ doc.source_airport_code }} → {{ doc.destination_airport_code }}
