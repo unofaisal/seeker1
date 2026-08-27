@@ -11,6 +11,15 @@ frappe.ui.form.on('Airplane Ticket', {
             }
             seen_addons.add(row.item);
         });
+
+   
+    let flight = await frappe.get_doc("Airplane Flight", frm.flight)
+    let capacity = await frappe.get_doc("Airplane", flight.airplane).capacity
+    let tickets = await frappe.db.count("Airplane Ticket", filters={"flight": flight, name: ['!=', frm.doc.name]})
+    if (tickets+1 > capacity) {
+        frappe.throw("The number of tickets for the flight can't exceed the number of seats in the flight's airplane")
+    }
+
     },
     refresh: function(frm) {
         calculate_total(frm);
