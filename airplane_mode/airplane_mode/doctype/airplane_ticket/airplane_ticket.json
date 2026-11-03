@@ -2,7 +2,7 @@
  "actions": [],
  "allow_bulk_edit": 1,
  "allow_rename": 1,
- "autoname": "format: {airplane}-{source_code}-to-{dest_code}-{###}",
+ "autoname": "format: {airplane}-{source_airport_code}-to-{destination_airport_code}-{###}",
  "creation": "2026-08-18 10:07:44.272092",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -14,10 +14,11 @@
   "column_break_bofc",
   "flight",
   "seat",
+  "airplane",
   "section_break_xeud",
-  "source_code",
+  "source_airport_code",
   "column_break_yxrb",
-  "dest_code",
+  "destination_airport_code",
   "add_ons_section",
   "add_ons",
   "section_break_oirm",
@@ -88,30 +89,11 @@
    "label": "Departure Details"
   },
   {
-   "description": "Auto-fetched from Source Airport",
-   "fetch_from": "flight.source_airport_code",
-   "fieldname": "source_code",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Source Airport Code",
-   "read_only": 1,
-   "reqd": 1
-  },
-  {
-   "description": "Auto-fetched from Destination Airport",
-   "fetch_from": "flight.destination_airport_code",
-   "fieldname": "dest_code",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Destination Airport Code",
-   "read_only": 1,
-   "reqd": 1
-  },
-  {
    "fetch_from": "flight.date_of_departure",
    "fieldname": "departure_date",
    "fieldtype": "Date",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Departure Date",
    "read_only": 1,
    "reqd": 1
@@ -176,13 +158,40 @@
   {
    "fieldname": "column_break_lmha",
    "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "flight.airplane",
+   "fieldname": "airplane",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Airplane"
+  },
+  {
+   "description": "Auto-fetched from Source Airport",
+   "fetch_from": "flight.source_airport_code",
+   "fieldname": "source_airport_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Source Airport Code",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "description": "Auto-fetched from Destination Airport",
+   "fetch_from": "flight.destination_airport_code",
+   "fieldname": "destination_airport_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Destination Airport Code",
+   "read_only": 1,
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-08-26 12:02:12.630355",
+ "modified": "2026-10-27 16:00:01.985234",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Ticket",
@@ -242,5 +251,6 @@
    "color": "Green",
    "title": "Boarded"
   }
- ]
+ ],
+ "track_changes": 1
 }
