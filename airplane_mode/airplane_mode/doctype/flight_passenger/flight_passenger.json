@@ -9,7 +9,9 @@
  "field_order": [
   "first_name",
   "last_name",
-  "date_of_birth"
+  "column_break_esdg",
+  "date_of_birth",
+  "full_name"
  ],
  "fields": [
   {
@@ -31,6 +33,16 @@
    "in_list_view": 1,
    "label": "Date Of Birth",
    "reqd": 1
+  },
+  {
+   "fieldname": "column_break_esdg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "label": "Full Name",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
@@ -39,12 +51,10 @@
   {
    "group": "Airplane Tickets",
    "link_doctype": "Airplane Ticket",
-   "link_fieldname": "passenger",
-   "parent_doctype": "Flight Passenger",
-   "table_fieldname": "airplane_tickets"
+   "link_fieldname": "passenger"
   }
  ],
- "modified": "2026-08-18 10:25:42.679865",
+ "modified": "2026-10-29 15:59:20.815857",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Flight Passenger",
