@@ -3,7 +3,7 @@
  "allow_bulk_edit": 1,
  "allow_guest_to_view": 1,
  "allow_rename": 1,
- "autoname": "format: {airplane}-{MM}-{YY}-{#####}",
+ "autoname": "format: {airplane}-{MM}-{YYYY}-{#####}",
  "creation": "2026-08-18 11:14:36.935887",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -24,7 +24,8 @@
   "date_of_departure",
   "duration",
   "column_break_bott",
-  "time_of_departure"
+  "time_of_departure",
+  "amended_from"
  ],
  "fields": [
   {
@@ -90,7 +91,7 @@
    "label": "Source Airport Code"
   },
   {
-   "fetch_from": "source_airport.code",
+   "fetch_from": "destination_airport.code",
    "fieldname": "destination_airport_code",
    "fieldtype": "Data",
    "label": "Destination Airport Code"
@@ -117,20 +118,37 @@
    "default": "0",
    "fieldname": "is_published",
    "fieldtype": "Check",
-   "label": "Is Published"
+   "label": "Is Published?"
   },
   {
    "fieldname": "route",
    "fieldtype": "Data",
    "label": "Route"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Airplane Flight",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "grid_page_length": 50,
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
  "is_published_field": "is_published",
- "links": [],
- "modified": "2026-08-26 12:01:01.773371",
+ "is_submittable": 1,
+ "links": [
+  {
+   "group": "Airplane Tickets",
+   "link_doctype": "Airplane Ticket",
+   "link_fieldname": "flight"
+  }
+ ],
+ "modified": "2026-11-02 12:47:53.320916",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",
