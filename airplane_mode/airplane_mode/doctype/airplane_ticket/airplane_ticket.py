@@ -10,8 +10,21 @@ from frappe.model.document import Document
 
 class AirplaneTicket(Document):
     def before_insert(self):
-        # Assign a random seat like "21A" before the ticket is first saved
-        self.seat = f"{random.randint(1, 99)}{random.choice('ABCDE')}"
+        self.check_capacity()
+        booked = set(
+            frappe.get_all(
+                "Airplane Ticket",
+                filters={"flight": self.flight, "seat": ["is", "set"]},
+                pluck="seat",
+            )
+        )
+        seat = f"{random.randint(1, 99)}{random.choice('ABCDE')}"
+        attempts = 0
+        while seat in booked and attempts < 100:
+            seat = f"{random.randint(1, 99)}{random.choice('ABCDE')}"
+            attempts += 1
+        self.seat = seat
+
 
     def validate(self):
         # Runs every time the ticket is saved
@@ -36,3 +49,10 @@ class AirplaneTicket(Document):
     def calculate_total_amount(self):
         add_ons_total = sum((row.amount or 0) for row in self.add_ons)
         self.total_amount = (self.flight_price or 0) + add_ons_total
+
+    def check_capacity(self):
+        airplane = frappe.db.get_value("Airplane Flight", self.flight, "airplane")
+        capacity = frappe.db.get_value("Airplane", airplane, "capacity")
+        tickets = frappe.db.count("Airplane Ticket", {"flight": self.flight})
+        if tickets >= capacity:
+            frappe.throw(_("This flight is full. The airplane has only {0} seats.").format(capacity))
