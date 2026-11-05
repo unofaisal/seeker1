@@ -1,5 +1,5 @@
 {
- "add_total_row": 0,
+ "add_total_row": 1,
  "add_translate_data": 0,
  "columns": [],
  "creation": "2026-08-26 11:39:06.436859",
@@ -13,7 +13,7 @@
  "is_standard": "Yes",
  "javascript": "frappe.ui.form.on('Airplane Ticket', {\n    validate(frm) {\n    let seen_addons = new Set();\n\n    (frm.doc.add_ons || []).forEach(row => {\n        if (seen_addons.has(row.item)) {\n            frappe.throw(\"You have duplicate addons\");\n            }\n            seen_addons.add(row.item);\n        });\n\n   \n    let flight = await frappe.get_doc(\"Airplane Flight\", frm.flight)\n    let capacity = await frappe.get_doc(\"Airplane\", flight.airplane).capacity\n    let tickets = await frappe.db.count(\"Airplane Ticket\", filters={\"flight\": flight, name: ['!=', frm.doc.name]})\n    if (tickets+1 > capacity) {\n        frappe.throw(\"The number of tickets for the flight can't exceed the number of seats in the flight's airplane\")\n    }\n\n    },\n    refresh: function(frm) {\n        calculate_total(frm);\n\n        if (!frm.is_new()) {\n            frm.add_custom_button(__('Set Seat'), function() {\n                frappe.prompt(\n                    {\n                        label: __('Seat Number'),\n                        fieldname: 'seat_number',\n                        fieldtype: 'Data',\n                        reqd: 1\n                    },\n                    function(values) {\n                        frm.set_value('seat', values.seat_number);\n                    },\n                    __('Set Seat'),\n                    __('Set')\n                );\n            }, __('Actions'));\n        }\n    },\n    flight_price: function(frm) {\n        calculate_total(frm);\n    },\n    before_submit(frm){\n    if (frm.doc.flight_status !== \"Boarded\"){\n      frappe.throw(\"Only Boarded ticket status are submitable\")\n    }\n  },\n    'add_ons': function(frm) {\n        calculate_total(frm);\n    },\n    'add_ons.amount': function(frm, cdt, cdn) {\n        calculate_total(frm);\n    }\n});\n\nfunction calculate_total(frm) {\n    var flight_price = frm.doc.flight_price || 0;\n    \n    var add_ons_total = 0;\n    if (frm.doc.add_ons && frm.doc.add_ons.length > 0) {\n        frm.doc.add_ons.forEach(function(row) {\n            add_ons_total += (row.amount || 0);\n        });\n    }\n    \n    var total = flight_price + add_ons_total;\n\n    frm.set_value('total_amount', total);\n}\n\nfrappe.ui.form.on(\"Airplane Ticket Add-on Item\", {\n  amount(frm){\n    calculate_total(frm)\n  }\n\t\n})",
  "letter_head": null,
- "modified": "2026-08-26 11:41:35.854368",
+ "modified": "2026-11-05 07:59:02.392159",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Revenue by Airline",
