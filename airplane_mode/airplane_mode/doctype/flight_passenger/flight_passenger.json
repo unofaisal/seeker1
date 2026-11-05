@@ -54,7 +54,7 @@
    "link_fieldname": "passenger"
   }
  ],
- "modified": "2026-10-29 15:59:20.815857",
+ "modified": "2026-11-05 08:14:16.620601",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Flight Passenger",
@@ -66,10 +66,24 @@
    "delete": 1,
    "email": 1,
    "export": 1,
+   "if_owner": 1,
    "print": 1,
    "read": 1,
    "report": 1,
-   "role": "All",
+   "role": "Travel Agent",
+   "select": 1,
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Airport Authority Personnel",
    "select": 1,
    "share": 1,
    "write": 1
