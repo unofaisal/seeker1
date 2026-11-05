@@ -155,8 +155,7 @@
    "allow_on_submit": 1,
    "fieldname": "gate_number",
    "fieldtype": "Data",
-   "label": "Gate Number",
-   "read_only": 1
+   "label": "Gate Number"
   }
  ],
  "grid_page_length": 50,
@@ -171,7 +170,7 @@
    "link_fieldname": "flight"
   }
  ],
- "modified": "2026-11-05 15:40:12.121972",
+ "modified": "2026-11-05 15:48:54.859168",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",
