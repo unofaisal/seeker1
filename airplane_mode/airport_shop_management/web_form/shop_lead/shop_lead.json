@@ -36,7 +36,7 @@
  "title": "Shop Lead",
  "web_form_fields": [
   {
-   "allow_read_on_all_link_options": 0,
+   "allow_read_on_all_link_options": 1,
    "fieldname": "shop",
    "fieldtype": "Link",
    "hidden": 0,

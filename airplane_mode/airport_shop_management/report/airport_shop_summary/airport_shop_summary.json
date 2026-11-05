@@ -38,7 +38,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": null,
- "modified": "2026-11-05 09:56:34.390249",
+ "modified": "2026-11-05 15:36:01.315461",
  "modified_by": "Administrator",
  "module": "Airport Shop Management",
  "name": "Airport Shop Summary",
@@ -48,7 +48,11 @@
  "ref_doctype": "Shop",
  "report_name": "Airport Shop Summary",
  "report_type": "Query Report",
- "roles": [],
+ "roles": [
+  {
+   "role": "Airport Authority Personnel"
+  }
+ ],
  "snapshot_report": 0,
  "timeout": 0
 }
