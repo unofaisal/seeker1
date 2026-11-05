@@ -72,7 +72,8 @@
    "fieldname": "source_airport",
    "fieldtype": "Link",
    "label": "Source Airport",
-   "options": "Airport"
+   "options": "Airport",
+   "reqd": 1
   },
   {
    "fieldname": "column_break_dmxl",
@@ -82,7 +83,8 @@
    "fieldname": "destination_airport",
    "fieldtype": "Link",
    "label": "Destination Airport",
-   "options": "Airport"
+   "options": "Airport",
+   "reqd": 1
   },
   {
    "fetch_from": "source_airport.code",
@@ -148,7 +150,7 @@
    "link_fieldname": "flight"
   }
  ],
- "modified": "2026-11-05 08:19:25.010705",
+ "modified": "2026-11-05 08:51:05.812479",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",
