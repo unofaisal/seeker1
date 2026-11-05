@@ -2,6 +2,7 @@
  "actions": [],
  "allow_bulk_edit": 1,
  "allow_rename": 1,
+ "autoname": "prompt",
  "creation": "2026-08-18 10:01:48.145043",
  "doctype": "DocType",
  "editable_grid": 1,
@@ -37,8 +38,14 @@
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2026-08-26 11:56:48.835857",
+ "links": [
+  {
+   "group": "shop",
+   "link_doctype": "Shop",
+   "link_fieldname": "airport"
+  }
+ ],
+ "modified": "2026-11-05 12:03:08.997289",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airport",

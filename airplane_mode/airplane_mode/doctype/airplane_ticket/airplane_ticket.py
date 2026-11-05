@@ -53,6 +53,6 @@ class AirplaneTicket(Document):
     def check_capacity(self):
         airplane = frappe.db.get_value("Airplane Flight", self.flight, "airplane")
         capacity = frappe.db.get_value("Airplane", airplane, "capacity")
-        tickets = frappe.db.count("Airplane Ticket", {"flight": self.flight})
+        tickets = frappe.db.count("Airplane Ticket", {"flight": self.flight, "docstatus": ["<", 2]})
         if tickets >= capacity:
             frappe.throw(_("This flight is full. The airplane has only {0} seats.").format(capacity))

@@ -23,6 +23,7 @@
   "add_ons",
   "section_break_oirm",
   "flight_price",
+  "gate_number",
   "column_break_lmha",
   "total_amount",
   "departure_details",
@@ -185,13 +186,19 @@
    "label": "Destination Airport Code",
    "read_only": 1,
    "reqd": 1
+  },
+  {
+   "fetch_from": "flight.gate_number",
+   "fieldname": "gate_number",
+   "fieldtype": "Data",
+   "label": "Gate Number"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-11-05 08:19:37.541083",
+ "modified": "2026-11-05 09:16:25.413326",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Ticket",
