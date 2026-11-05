@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ shop.shop_name }}</title>
+    <link rel="stylesheet" href="/assets/airplane_mode/css/picnic.min.css">
+    <link rel="stylesheet" href="/assets/airplane_mode/css/shops.css">
+</head>
+<body>
+    <nav>
+        <a href="/shops" class="brand"><span>Airport Shops</span></a>
+        <div class="menu">
+            <a href="/shops" class="button">All shops</a>
+        </div>
+    </nav>
+
+    <main class="page">
+        <section class="hero">
+            <h1>{{ shop.shop_name }}</h1>
+            <p>{{ shop.airport_label }}</p>
+        </section>
+
+        <div class="panel">
+            <div class="facts">
+                <div class="fact"><small>Shop number</small><b>{{ shop.shop_number }}</b></div>
+                <div class="fact"><small>Type</small><b>{{ shop.shop_type or "-" }}</b></div>
+                <div class="fact"><small>Area</small><b>{{ shop.area_sq_ft }} sq ft</b></div>
+                <div class="fact">
+                    <small>Status</small>
+                    {% if shop.status == "Available" %}
+                    <span class="label success">Available</span>
+                    {% else %}
+                    <span class="label warning">Occupied</span>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="actions">
+                {% if shop.status == "Available" %}
+                <a class="button" href="/shop-lead/new?shop={{ shop.name | urlencode }}">I'm interested in renting this shop</a>
+                {% else %}
+                <p>This shop is currently leased.</p>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Airport Shops</title>
+    <link rel="stylesheet" href="/assets/airplane_mode/css/picnic.min.css">
+    <link rel="stylesheet" href="/assets/airplane_mode/css/shops.css">
+</head>
+<body>
+    <nav>
+        <a href="/shops" class="brand"><span>Airport Shops</span></a>
+    </nav>
+
+    <main class="page">
+        <section class="hero">
+            <h1>Shops</h1>
+            <p>Browse retail space available for lease at our airports.</p>
+        </section>
+
+        {% if shops %}
+        <div class="panel">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Shop</th>
+                        <th>Airport</th>
+                        <th>Type</th>
+                        <th>Area (sq ft)</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for shop in shops %}
+                    <tr>
+                        <td><a href="/shops/detail?shop={{ shop.name | urlencode }}">{{ shop.shop_name }}</a></td>
+                        <td>{{ shop.airport_label }}</td>
+                        <td>{{ shop.shop_type or "-" }}</td>
+                        <td>{{ shop.area_sq_ft }}</td>
+                        <td>
+                            {% if shop.status == "Available" %}
+                            <span class="label success">Available</span>
+                            {% else %}
+                            <span class="label warning">Occupied</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p>No shops listed yet.</p>
+        {% endif %}
+    </main>
+</body>
+</html>

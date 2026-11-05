@@ -271,5 +271,15 @@ fixtures = [
                 ],
             ]
         ],
-    }
+    },
+    {
+        "dt": "Shop Type",
+        "filters": [["name", "in", ["Stall", "Walk-through", "Normal"]]],
+    },
 ]
+
+scheduler_events = {
+    "monthly": [
+        "airplane_mode.airport_shop_management.tasks.send_rent_reminders",
+    ],
+}
